@@ -1,13 +1,16 @@
 package com.vkl.cursomc.domain;
 
+import javax.persistence.Entity;
+
 import com.vkl.cursomc.domain.enums.EstadoPagamento;
 
-public class PagamentoComCartao extends Pagamento{
-	
+@Entity
+public class PagamentoComCartao extends Pagamento {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer numeroDeParcelas;
-	
+
 	public PagamentoComCartao() {
 		// TODO Auto-generated constructor stub
 	}
@@ -24,8 +27,5 @@ public class PagamentoComCartao extends Pagamento{
 	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
 		this.numeroDeParcelas = numeroDeParcelas;
 	}
-	
-	
-	
-	
+
 }
