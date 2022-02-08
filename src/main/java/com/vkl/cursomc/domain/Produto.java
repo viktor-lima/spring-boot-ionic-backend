@@ -2,8 +2,10 @@ package com.vkl.cursomc.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,27 +18,24 @@ import javax.persistence.ManyToMany;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-public class Produto implements Serializable{
+public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 	private Double price;
-	
+
 	@JsonBackReference
 	@ManyToMany
-	@JoinTable(
-			name = "PRODUTO_CATEGORIA",
-			joinColumns = @JoinColumn(name = "produto_id"),
-			inverseJoinColumns = @JoinColumn(name = "categoria_id")
-			)
+	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private List<Categoria> categorias = new ArrayList<>();
-	
+
+	private Set<ItemPedido> itens = new HashSet<>();
+
 	public Produto() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Produto(Integer id, String name, Double price) {
@@ -44,6 +43,15 @@ public class Produto implements Serializable{
 		this.name = name;
 		this.price = price;
 	}
+	
+	//lista de Pedido associado a ItemPedido(Pr_Conhecer_Pe)
+	public List<Pedido> getPedidos(){
+		List<Pedido> lista = new ArrayList<Pedido>();
+		for(ItemPedido x : itens)
+			lista.add(x.getPedido());
+		return lista;
+	}
+	
 
 	public Integer getId() {
 		return id;
@@ -77,6 +85,14 @@ public class Produto implements Serializable{
 		this.categorias = categorias;
 	}
 
+	public Set<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -93,10 +109,5 @@ public class Produto implements Serializable{
 		Produto other = (Produto) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
-	
-	
-	 
+
 }
