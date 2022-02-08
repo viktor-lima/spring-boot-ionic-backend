@@ -3,10 +3,15 @@ package com.vkl.cursomc.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+
+@Entity
 public class ItemPedido implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
+	
+	@EmbeddedId
 	private ItemPedidoPK id = new ItemPedidoPK();
 
 	private Double desconto;
@@ -14,7 +19,6 @@ public class ItemPedido implements Serializable{
 	private Double price;
 
 	public ItemPedido() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public ItemPedido(Pedido pedido, Produto produto, Double desconto, Integer quantidade, Double price) {
