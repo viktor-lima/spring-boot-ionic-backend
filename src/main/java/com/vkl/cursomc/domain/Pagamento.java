@@ -22,10 +22,10 @@ public abstract class Pagamento implements Serializable {
 	@Id
 	private Integer id;
 	private Integer estado;
-	
+
 	@JsonIgnore
 	@OneToOne
-	@JoinColumn(name="pedido_id")
+	@JoinColumn(name = "pedido_id")
 	@MapsId
 	private Pedido pedido;
 
@@ -37,7 +37,7 @@ public abstract class Pagamento implements Serializable {
 		super();
 		this.id = id;
 		this.estado = estado.getCod();
-		this.pedido = pedido;
+		this.pedido = (pedido == null) ? null : pedido;
 	}
 
 	public Integer getId() {
@@ -80,7 +80,5 @@ public abstract class Pagamento implements Serializable {
 		Pagamento other = (Pagamento) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
 
 }
