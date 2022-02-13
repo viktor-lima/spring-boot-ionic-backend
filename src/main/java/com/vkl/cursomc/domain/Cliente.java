@@ -29,19 +29,18 @@ public class Cliente implements Serializable {
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
-	
-	
+
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> encerecos = new ArrayList<>();
-	
+
 	@ElementCollection
-	@CollectionTable(name ="TELEFONE")
+	@CollectionTable(name = "TELEFONE")
 	private Set<String> telefones = new HashSet<>();
-	
+
 	@JsonBackReference
 	@OneToMany(mappedBy = "cliente")
-	private List<Pedido> pedidos = new ArrayList<>(); 
-	
+	private List<Pedido> pedidos = new ArrayList<>();
+
 	public Cliente() {
 	}
 
@@ -51,7 +50,7 @@ public class Cliente implements Serializable {
 		this.name = name;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
-		this.tipo = tipo.getCod();
+		this.tipo = (tipo == null) ? null : tipo.getCod();
 	}
 
 	public Integer getId() {
@@ -109,7 +108,7 @@ public class Cliente implements Serializable {
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
-	
+
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
