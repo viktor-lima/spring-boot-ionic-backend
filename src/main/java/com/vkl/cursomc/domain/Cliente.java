@@ -31,7 +31,7 @@ public class Cliente implements Serializable {
 	private Integer tipo;
 
 	@OneToMany(mappedBy = "cliente")
-	private List<Endereco> encerecos = new ArrayList<>();
+	private List<Endereco> endereco = new ArrayList<>();
 
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE")
@@ -93,12 +93,12 @@ public class Cliente implements Serializable {
 		this.tipo = tipo.getCod();
 	}
 
-	public List<Endereco> getEncerecos() {
-		return encerecos;
+	public List<Endereco> getEnderecos() {
+		return endereco;
 	}
 
-	public void setEncerecos(List<Endereco> encerecos) {
-		this.encerecos = encerecos;
+	public void setEncerecos(List<Endereco> endereco) {
+		this.endereco = endereco;
 	}
 
 	public Set<String> getTelefones() {
