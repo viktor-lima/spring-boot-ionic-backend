@@ -7,7 +7,7 @@ public class ValidationError extends StandardError {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<FieldMassege> errors = new ArrayList<>();
+	private List<FieldMessage> errors = new ArrayList<>();
 
 	
 
@@ -15,12 +15,12 @@ public class ValidationError extends StandardError {
 		super(status, msg, timeStamp);
 	}
 
-	public List<FieldMassege> getErrors() {
+	public List<FieldMessage> getErrors() {
 		return errors;
 	}
 
 	public void addError(String fieldName, String messagem) {
-		errors.add(new FieldMassege(fieldName, messagem));
+		errors.add(new FieldMessage(fieldName, messagem));
 	}
 
 }

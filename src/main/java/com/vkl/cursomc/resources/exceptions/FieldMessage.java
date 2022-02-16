@@ -2,7 +2,7 @@ package com.vkl.cursomc.resources.exceptions;
 
 import java.io.Serializable;
 
-public class FieldMassege implements Serializable{
+public class FieldMessage implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -10,10 +10,10 @@ public class FieldMassege implements Serializable{
 	private String fieldName;
 	private String message;
 	
-	 public FieldMassege() {
+	 public FieldMessage() {
 	 }
 
-	public FieldMassege(String fieldName, String message) {
+	public FieldMessage(String fieldName, String message) {
 		super();
 		this.fieldName = fieldName;
 		this.message = message;
