@@ -13,6 +13,7 @@ import com.vkl.cursomc.services.validation.ClienteInsert;
 public class ClienteNewDTO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
 	@NotEmpty(message="Preenchimento obrigatório")
 	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
 	private String name;
@@ -26,7 +27,7 @@ public class ClienteNewDTO implements Serializable{
 
 	private Integer tipo;
 
-//	@NotEmpty(message="Preenchimento obrigatório")
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String logradouro;
 
 	@NotEmpty(message="Preenchimento obrigatório")
