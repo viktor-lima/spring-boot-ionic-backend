@@ -32,7 +32,7 @@ public class ProdutoService {
 	public Page<Produto> search(String name, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction){
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		List<Categoria> categorias = categoriaRepository.findAllById(ids);
-		return repo.search(name,categorias, pageRequest);
+		return repo.search(name, categorias, pageRequest);
 		
 	}
 	

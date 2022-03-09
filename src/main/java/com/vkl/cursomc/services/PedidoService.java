@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vkl.cursomc.domain.ItemPedido;
 import com.vkl.cursomc.domain.PagamentoComBoleto;
@@ -27,8 +28,12 @@ public class PedidoService {
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
 
+//	@Autowired
+//	private ProdutoRepository produtoRepository;
+	
 	@Autowired
-	private ProdutoRepository produtoRepository;
+	private ProdutoService produtoService;
+	
 	
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
@@ -39,6 +44,7 @@ public class PedidoService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));
 	}
 
+	@Transactional
 	public Pedido insert(Pedido obj) {
 		obj.setId(null);
 		obj.setInstante(new Date());
@@ -52,7 +58,8 @@ public class PedidoService {
 		pagamentoRepository.save(obj.getPagamento());
 		for(ItemPedido i : obj.getItens()) {
 			i.setDesconto(0.0);
-			i.setPrice(produtoRepository.findById(i.getProduto().getId()).get().getPrice());
+			i.setPrice(produtoService.find(i.getProduto().getId()).getPrice());
+//			i.setPrice(produtoRepository.findById(i.getProduto().getId()).get().getPrice());
 			i.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
