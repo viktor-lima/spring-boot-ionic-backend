@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vkl.cursomc.domain.ItemPedido;
 import com.vkl.cursomc.domain.PagamentoComBoleto;
 import com.vkl.cursomc.domain.Pedido;
+import com.vkl.cursomc.domain.Produto;
 import com.vkl.cursomc.domain.enums.EstadoPagamento;
 import com.vkl.cursomc.repositories.ItemPedidoRepository;
 import com.vkl.cursomc.repositories.PagamentoRepository;
@@ -28,11 +29,14 @@ public class PedidoService {
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
 
-//	@Autowired
-//	private ProdutoRepository produtoRepository;
+	@Autowired
+	private ClienteService clienteService;
 	
 	@Autowired
 	private ProdutoService produtoService;
+	
+	@Autowired
+	private ProdutoRepository produtoRepository;
 	
 	
 	@Autowired
@@ -48,6 +52,7 @@ public class PedidoService {
 	public Pedido insert(Pedido obj) {
 		obj.setId(null);
 		obj.setInstante(new Date());
+		obj.setCliente(clienteService.find(obj.getCliente().getId()));
 		obj.getPagamento().setEstado(EstadoPagamento.PENDENTE);
 		obj.getPagamento().setPedido(obj);
 		if(obj.getPagamento() instanceof PagamentoComBoleto) {
@@ -58,11 +63,13 @@ public class PedidoService {
 		pagamentoRepository.save(obj.getPagamento());
 		for(ItemPedido i : obj.getItens()) {
 			i.setDesconto(0.0);
-			i.setPrice(produtoService.find(i.getProduto().getId()).getPrice());
+			i.setProduto(produtoService.find(i.getProduto().getId()));
+			i.setPrice(i.getProduto().getPrice());
 //			i.setPrice(produtoRepository.findById(i.getProduto().getId()).get().getPrice());
 			i.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
+		System.out.println(obj);
 		return obj;
 	}
 
