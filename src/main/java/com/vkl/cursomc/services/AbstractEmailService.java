@@ -28,16 +28,5 @@ public abstract class AbstractEmailService implements EmailService{
 		sm.setText(obj.toString());
 		return sm;
 	}
-
-	
-	
-
-//	@Override
-//	public void sendEmail(SimpleMailMessage msg) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-	
-	
 	
 }
