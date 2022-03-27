@@ -55,6 +55,7 @@ public class Cliente implements Serializable {
 	@CollectionTable(name="PERFIS")
 	private Set<Integer> perfis = new HashSet<Integer>();
 	
+	private String imgURl;
 
 	public Cliente() {
 		addPerfil(Perfil.CLIENTE);
@@ -153,6 +154,15 @@ public class Cliente implements Serializable {
 	
 
 	
+	
+
+	public String getImgURl() {
+		return imgURl;
+	}
+
+	public void setImgURl(String imgURl) {
+		this.imgURl = imgURl;
+	}
 
 	@Override
 	public int hashCode() {
