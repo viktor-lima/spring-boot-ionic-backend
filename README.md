@@ -2,7 +2,7 @@
 
 ![java](https://img.shields.io/badge/-java-05122A?style=flat&logo=java)&nbsp;
 ![springBoot](https://img.shields.io/badge/-springBoot-05122A?style=flat&logo=spring-boot)&nbsp;
-[![heroku](https://img.shields.io/badge/-Heroku-05122A?style=flat&logo=heroku)](https://dashboard.heroku.com/apps/cafe-mania-app)&nbsp;
+[![heroku](https://img.shields.io/badge/-Heroku-05122A?style=flat&logo=heroku)](https://dashboard.heroku.com/apps/vlk-spring-ionic)&nbsp;
 
 
 
