@@ -1,11 +1,11 @@
-# Case Spring Boot 
+# Case Sistema de pedidos
 
 ![java](https://img.shields.io/badge/-java-05122A?style=flat&logo=java)&nbsp;
 ![springBoot](https://img.shields.io/badge/-springBoot-05122A?style=flat&logo=spring-boot)&nbsp;
 [![heroku](https://img.shields.io/badge/-Heroku-05122A?style=flat&logo=heroku)](https://dashboard.heroku.com/apps/cafe-mania-app)&nbsp;
 
 
-### Sistema de pedidos 
+
 <p>
   API Rest usando Java com Spring Boot e banco de dados MySQL, para um sistema de pedidos. Hibernate para mapeamento objeto-relacional, Serviço de email com SMTP da Google, armazenamento de imagens com storage S3 da Amazon, autenticação e autorização com tokens JWT, e implantação na nuvem usando a plataforma Heroku.
   Banco de dados H2 para testes, com profile de teste , profile de desenvolvimento e profile de produção.
